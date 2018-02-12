@@ -12,6 +12,13 @@
   </style>
 </head>
 <body>
+<script>
+  const APIKEY= '?apiKey=ub5BFaJp0V2ASPxrYFiNY-ACVx-EEtAG';
+  const DBURL_todo = `https://api.mlab.com/api/1/databases/todo-list-js7/collections/todo${APIKEY}`;
+  const DBURL_completed = `https://api.mlab.com/api/1/databases/todo-list-js7/collections/completed${APIKEY}`;
+  const DBURL_archive = `https://api.mlab.com/api/1/databases/todo-list-js7/collections/archive${APIKEY}`;
+  console.log(DBURL_todo, DBURL_completed, DBURL_archive);
+</script>
 <div class="section-to-do">
   <h1 class="title">JS ToDo list</h1>
   <header>
