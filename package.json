@@ -1,6 +1,6 @@
 {
   "name": "todo",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {
@@ -18,7 +18,8 @@
     "nodemon": "^1.11.0"
   },
   "engines": {
-    "node": "7.4.0"
+    "node": "7.4.0",
+    "npm": "4.0.5"
   },
   "repository": {
     "type": "git",
