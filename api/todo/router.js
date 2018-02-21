@@ -1,32 +1,33 @@
 const express = require('express');
 
-const Todo = require('./model');
+const TODO = require('./model');
 
 const router = express.Router();
 
-router.get('/todo', function(req, res, next) {
-  Todo.find({})
-    .then(function(todo) {
-  res.json(todo)
-}).catch(next)
+router.get('/todo', (req, res, next) => {
+  TODO.find({})
+      .then(todolist => {
+        res.json({todolist})
+      })
+      .catch(next)
 });
 
-router.post('/todo', function (req, res, next) {
-  new Todo(req.body.todo)
+router.post('/todo', (req, res, next) => {
+  new TODO(req.body.todo)
       .save()
-      .then(function (todo) {
-        res.json(todo)
+      .then(todo => {
+        res.json({todo})
       })
       .catch(next)
 });
 
 router.put('/todo/:id', function (req, res) {
-  Todo.findById(req.params.id, function (err, todo) {
-    todo.text = req.body.todo.text || todo.text;
-    todo.url = req.body.todo.url || todo.url;
-    todo.date = req.body.todo.date || todo.date;
-    todo.complete = req.body.todo.complete;
-    todo.save(function (err, todo) {
+  TODO.findById(req.params.id, (err, todo) => {
+    todo.text = req.body.todo.text || todo.text
+    todo.url = req.body.todo.url || todo.url
+    todo.date = req.body.todo.date || todo.date
+    todo.complete = req.body.todo.complete
+    todo.save((err, todo) => {
       if (err) {
         res.status(400).json(err)
       }
@@ -36,11 +37,11 @@ router.put('/todo/:id', function (req, res) {
 });
 
 router.delete('/todo/:id', function (req, res) {
-  var id = req.params.id;
-  Todo.remove({
+  let id = req.params.id;
+  TODO.remove({
     _id: id
   }, function () {
-    res.json();
+    res.json()
   })
 });
 
